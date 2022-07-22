@@ -9,6 +9,7 @@ import NotFoundPage from "../pages/NotFoundPage";
 import ProjectPage from "../pages/ProjectPage";
 import ProjectsPage from "../pages/ProjectsPage";
 import RegisterPage from "../pages/RegisterPage";
+import PrivateRoute from "./PrivateRoute";
 
 const AppRouter = () => {
     return (
@@ -16,18 +17,14 @@ const AppRouter = () => {
             <Router>
                 <Layout1>
                     <Routes>
-                        <Route exact path="/" element={<HomePage />}></Route>
-                        <Route exact path="/login" element={<LoginPage />}></Route>
-                        <Route exact path="/register" element={<RegisterPage />}></Route>
-                        <Route exact path="/account" element={<AccountPage />}></Route>
-                        <Route exact path="/projects" element={<ProjectsPage />}></Route>
-                        <Route
-                            exact
-                            path="/project/:projectId"
-                            element={<ProjectPage />}
-                        ></Route>
-                        <Route exact path="/admin/users" element={<UsersPage />}></Route>
-                        <Route exact path="*" element={<NotFoundPage />}></Route>
+                        <Route exact path="/" element={<HomePage />} />
+                        <Route exact path="/login" element={<LoginPage />} />
+                        <Route exact path="/register" element={<RegisterPage />} />
+                        <Route exact path="/account" element={<PrivateRoute><AccountPage /></PrivateRoute>} />
+                        <Route exact path="/projects" element={<PrivateRoute><ProjectsPage /></PrivateRoute>} />
+                        <Route exact path="/project/:projectId" element={<PrivateRoute><ProjectPage /></PrivateRoute>} />
+                        <Route exact path="/admin/users" element={<PrivateRoute><UsersPage /></PrivateRoute>} />
+                        <Route exact path="*" element={<NotFoundPage />} />
                     </Routes>
                 </Layout1>
             </Router>
