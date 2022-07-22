@@ -1,19 +1,27 @@
 import React from 'react';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import AccountPage from '../pages/AccountPage';
+import UsersPage from '../pages/admin/UsersPage';
+import HomePage from '../pages/HomePage';
+import LoginPage from '../pages/LoginPage';
+import NotFoundPage from '../pages/NotFoundPage';
+import ProjectPage from '../pages/ProjectPage';
+import ProjectsPage from '../pages/ProjectsPage';
+import RegisterPage from '../pages/RegisterPage';
 
 const AppRouter = () => {
     return (
         <div>
             <Router>
-                <Routes>
-                    <Route exaxt path='/' component={HomePage}></Route>
-                    <Route exaxt path='/login' component={LoginPage}></Route>
-                    <Route exaxt path='/register' component={RegisterPage}></Route>
-                    <Route exaxt path='/account' component={AccountPage}></Route>
-                    <Route exaxt path='/projects' component={ProjectsPage}></Route>
-                    <Route exaxt path='/project/:projectId' component={ProjectPage}></Route>
-                    <Route exaxt path='/admin/users' component={UsersPage}></Route>
-                    <Route exaxt path='*' component={NotFoundPage}></Route>
+                <Routes >
+                    <Route exact path='/' element={<HomePage />}></Route>
+                    <Route exact path='/login' element={<LoginPage />}></Route>
+                    <Route exact path='/register' element={<RegisterPage />}></Route>
+                    <Route exact path='/account' element={<AccountPage />}></Route>
+                    <Route exact path='/projects' element={<ProjectsPage />}></Route>
+                    <Route exact path='/project/:projectId' element={<ProjectPage />}></Route>
+                    <Route exact path='/admin/users' element={<UsersPage />}></Route>
+                    <Route exact path='*' element={<NotFoundPage />}></Route>
                 </Routes>
             </Router>
         </div>
