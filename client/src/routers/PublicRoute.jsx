@@ -1,12 +1,13 @@
 import React, {useContext} from 'react';
 import { Navigate } from "react-router-dom";
 import AuthContext from '../contexts/AuthContext';
+import routes from '../helpers/routes';
 
 const PublicRoute = ( {children} ) => {
 
-    const {user} = useContext(AuthContext);
+    const {isLogged} = useContext(AuthContext);
 
-    if(user) return <Navigate to="/projects" />
+    if(isLogged()) return <Navigate to={routes.projects} />
     return children
 };
 
