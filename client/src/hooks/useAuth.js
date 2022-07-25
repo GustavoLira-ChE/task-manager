@@ -1,7 +1,10 @@
 import { useState } from "react";
 
 const useAuth = () => {
-    const [user, setUser] = useState({id: 1, role:"admin"});
+    const [user, setUser] = useState(null);
+
+    const login = (userCredentials) => setUser({id: 1, role:"admin"});
+    const logout = () => setUser(null);
 
     const isLogged = () => !!user;
     const hasRole = (role) => role && user?.role !== role;
@@ -9,7 +12,9 @@ const useAuth = () => {
     return {
         user,
         isLogged,
-        hasRole
+        hasRole,
+        login,
+        logout
     }
 }
 
