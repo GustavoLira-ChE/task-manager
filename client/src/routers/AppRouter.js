@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout1 from "../components/Layouts/Layout1";
+import roles from "../helpers/roles";
 import AccountPage from "../pages/AccountPage";
 import UsersPage from "../pages/admin/UsersPage";
 import HomePage from "../pages/HomePage";
@@ -24,7 +25,7 @@ const AppRouter = () => {
                         <Route exact path="/account" element={<PrivateRoute><AccountPage /></PrivateRoute>} />
                         <Route exact path="/projects" element={<PrivateRoute><ProjectsPage /></PrivateRoute>} />
                         <Route exact path="/project/:projectId" element={<PrivateRoute><ProjectPage /></PrivateRoute>} />
-                        <Route exact path="/admin/users" element={<PrivateRoute><UsersPage /></PrivateRoute>} />
+                        <Route exact path="/admin/users" element={<PrivateRoute hasRole={roles.admin}><UsersPage /></PrivateRoute>} />
                         <Route exact path="*" element={<NotFoundPage />} />
                     </Routes>
                 </Layout1>
