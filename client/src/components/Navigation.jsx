@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import AuthContext from '../contexts/AuthContext';
 import routes from '../helpers/routes';
 
 const Navigation = () => {
+
+    const {logout} = useContext(AuthContext);
+
     return (
         <Navbar collapseOnSelect expand="lg" variant="dark" bg="dark">
             <Navbar.Brand as={NavLink} to={routes.home}>
@@ -21,6 +25,7 @@ const Navigation = () => {
                     <Nav.Link as={NavLink} to={routes.login}>Iniciar Sesión</Nav.Link>
                     <Nav.Link as={NavLink} to={routes.register}>Registrarse</Nav.Link>
                     <Nav.Link as={NavLink} to={routes.account}>Mi Cuenta</Nav.Link>
+                    <Nav.Link onClick={logout}>Cerrar Sesión</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
 
